@@ -102,7 +102,7 @@ Valores faltantes en extract - fees - data analyst - .csv:
 Filas duplicadas en extract - fees - data analyst - .csv:
 - 0
 
-Se comprobó que la columna `id` de la primera base de datos corresponde a la columna `cash_request_id` de la segunda base de datos. En este sentido, se decidió fusionar las dos bases de datos considerando estos campos como equivalentes. Dado que las columnas `id`, `created_at` y `updated_at` tienen el mismo nombre en ambas bases de datos, se decidió añadir el sufijo `_fee` a todas las columnas de la segunda base de datos, excepto `cash_request_id`.
+Se comprobó que la columna `id` de la primera base de datos corresponde a la columna `cash_request_id` de la segunda base de datos. En este sentido, se decidió fusionar las dos bases de datos considerando estos campos como equivalentes. 2913 registros de cash request no tienen un valor fee asociado. Dado que los datos no asociados no son de interés para el análisis de las métricas, se decidió tomar en cuenta solo los registros de cash request que tienen un registro de fee asociado. Por otro lado, dado que las columnas `id`, `created_at` y `updated_at` tienen el mismo nombre en ambas bases de datos, se decidió añadir el sufijo `_fee` a todas las columnas de la segunda base de datos, excepto `cash_request_id`.
 
 **Resultado de agregar '_fee' a cada columna de extract - fees - data analyst - .csv**:
 
