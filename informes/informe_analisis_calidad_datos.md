@@ -266,6 +266,51 @@ Valores faltantes en cleaned_merged_cash_request_fees.csv:
 Filas duplicadas en cleaned_merged_cash_request_fees.csv:
 - 0
 
+Consecuentemente, fue necesario convertir el tipo de datos de las columnas de interés a tipos que faciliten el manejo de los datos en las métricas. Las columnas `created_at` y `created_at_fee` se cambiaron de tipo de datos de objeto a tipo de fecha.
+
+**Conversión de las columnas 'created_at' and 'created_at_fee' a formato de fecha**:
+
+El DataFrame tiene 21057 entradas, con índices que van de 0 a 21056. Contiene un total de 29 columnas con los siguientes tipos de datos:
+
+- 4 columnas de tipo `float64`
+- 2 columnas de tipo `int64`
+- 21 columnas de tipo `object`
+- 2 columnas de tipo `datetime64[ns, UTC]`
+
+A continuación se muestra el número de valores no nulos por columna:
+
+- `id`: 21057 no nulos
+- `amount`: 21057 no nulos
+- `status`: 21057 no nulos
+- `created_at`: 21057 no nulos
+- `updated_at`: 21057 no nulos
+- `user_id`: 21057 no nulos
+- `moderated_at`: 21057 no nulos
+- `deleted_account_id`: 21057 no nulos
+- `reimbursement_date`: 21057 no nulos
+- `cash_request_received_date`: 21057 no nulos
+- `money_back_date`: 21057 no nulos
+- `transfer_type`: 21057 no nulos
+- `send_at`: 21057 no nulos
+- `recovery_status`: 21057 no nulos
+- `reco_creation`: 21057 no nulos
+- `reco_last_update`: 21057 no nulos
+- `id_fee`: 21057 no nulos
+- `cash_request_id`: 21057 no nulos
+- `type_fee`: 21057 no nulos
+- `status_fee`: 21057 no nulos
+- `category_fee`: 21057 no nulos
+- `total_amount_fee`: 21057 no nulos
+- `reason_fee`: 21057 no nulos
+- `created_at_fee`: 21057 no nulos
+- `updated_at_fee`: 21057 no nulos
+- `paid_at_fee`: 21057 no nulos
+- `from_date_fee`: 21057 no nulos
+- `to_date_fee`: 21057 no nulos
+- `charge_moment_fee`: 21057 no nulos
+
+El uso de memoria del DataFrame es de aproximadamente 4.7 MB.
+
 Por último, a continuación se presentan las posibles columnas útiles para los objetivos del proyecto, las cuales se verificó que no tienen valores faltantes o datos que podrían representar un riesgo para las métricas.
 
 **Calidad de los datos necesarios para las métricas**:
