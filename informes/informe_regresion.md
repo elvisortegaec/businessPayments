@@ -154,3 +154,24 @@ Este es un resultado bastante bueno para un modelo de regresión logística, ind
 
 El modelo de regresión logística multinomial ha sido capaz de predecir de manera eficiente los diferentes estados de las transacciones, alcanzando una alta precisión en la clasificación. Este resultado es prometedor y podría ser útil para predecir el estado de futuras transacciones en la plataforma.
 
+##### Recall y Predicción. 
+
+![Grafico recall sin smot](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/recall_sin_smot.png?raw=true)
+
+El modelo tiene un desempeño muy bueno en la clase "transaction_declined", con una precisión y recall altos (90% y 100% respectivamente), lo que sugiere que predice muy bien las instancias de esta clase.
+
+Sin embargo, en las demás clases, el modelo no está funcionando bien en absoluto, con precisión, recall y F1-score de 0.00, lo que indica que no está prediciendo nada correctamente en estas clases.
+
+La precisión global (accuracy) es de 0.90, lo que es un buen valor, pero se ve influenciado principalmente por el desempeño en la clase 4, que es la clase dominante en el conjunto de datos. Esto indica que el modelo podría estar sufriendo un desbalance de clases.
+
+##### Introducción de SMOTE 
+
+![Grafico recall con SMOTE](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/recall_con_smot.png?raw=true)
+
+En muchas ocasiones, en un problema de clasificación ocurre que las clases que hay que discriminar no están representadas proporcionalmente, sino que una clase predomina sobre las otras o bien una clase tiene muy pocos elementos en el conjunto de datos. 
+
+Para solucionar este problema existen diferentes técnicas, como por ejemplo SMOTE, acrónimo de Synthetic Minority Over-sampling Technique, basada en generar de forma sintética nuevos elementos de la clase minoritaria usando como referencia los elementos de dicha clase ya presentes en el conjunto de datos. Para ello, a partir de un elemento de la clase minoritaria elegido al azar, se escoge un cierto número de vecinos más cercanos y se genera un nuevo elemento combinándolos linealmente de forma ponderada introduciendo un factor aleatorio para generar elementos parecidos. 
+
+Vemos que ahora el recall ahora es alto en money_sent, waiting_user_confirmation, approved tiene un recall de aproximadamente 0,4 mientras que transaction_declined tiene menos recall. Todo esto nos viene a decir que si el recall no es muy elevado (valores entre 0 y 1) tenemos posibilidades de que nos devuelva falsos positivos.
+
+La capacidad predictiva pero no cambia. Sigue siendo muy elevada en transaction_declined y en el resto prácticamente inexistente. 
