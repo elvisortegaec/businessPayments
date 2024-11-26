@@ -52,3 +52,5 @@ El análisis se centrará en prever el estado futuro de las transacciones. Los p
     4: 'transaction_declined', 
     5: 'waiting_user_confirmation'
 
+![Matriz de correlación de las variables numéricas](file:///C:/Users/heatb/OneDrive/Documentos/GitHub/businessPayments/graficos_y_salidas/matriz_correlacion_numericas.png)
+
