@@ -52,6 +52,39 @@ El análisis se centrará en prever el estado futuro de las transacciones. Los p
     4: 'transaction_declined', 
     5: 'waiting_user_confirmation'
 
+**Matriz de correlación variables numéricas**:
+
 ![Matriz de correlación de las variables numéricas](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/matriz_correlacion_numericas.png?raw=true)
 
+Podemos ver que los campos que están relacionados son los de ID, variables que a nivel predictorio nos aportan poca capacidad predictiva.
 
+**Comportamiento recovery_status**:
+
+recovery_status	recovery_status_encoded
+
+    98	0
+    pending	3
+    completed	2
+    pending_direct_debit	4
+    cancelled	1
+    
+##### Explicación:
+
+    recovery_status: Esta es la variable original, que contiene los estados de la transacción, como "98", "pending", "completed", "pending_direct_debit", y "cancelled".
+
+    recovery_status_encoded: Es el valor numérico asignado a cada categoría, como resultado del Label Encoding. Este proceso asigna un número único a cada categoría en función de su orden en los datos.
+
+##### Mapeo entre las categorías y sus valores numéricos:
+
+    "98": Ha sido codificado como 0.
+    "pending": Ha sido codificado como 3.
+    "completed": Ha sido codificado como 2.
+    "pending_direct_debit": Ha sido codificado como 4.
+    "cancelled": Ha sido codificado como 1.
+
+##### Consideraciones:
+
+    - El proceso de Label Encoding asigna un número entero a cada categoría. Sin embargo, el valor numérico no tiene un significado inherente más allá de representar una categoría.
+    
+    - En este caso, los valores numéricos simplemente son representaciones para que las categorías puedan ser procesadas por algoritmos de machine learning, que no entienden valores categóricos.
+    
