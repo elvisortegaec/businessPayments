@@ -1,6 +1,49 @@
-![uoc_logo](https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Logotipo_UOC.svg/480px-Logotipo_UOC.svg.png)
 
-# Desafío Empresarial: Análisis de Insights y Cohortes Avanzados para los Pagos de Business Payments
+# Análisis de Insights y Cohortes Avanzados para los Pagos de Business Payments
+
+## Introducción
+
+Business Payments, una empresa de servicios financieros de vanguardia, ha estado ofreciendo soluciones innovadoras de adelanto de efectivo desde su creación en 2020. Con un compromiso de proporcionar adelantos de dinero gratuitos y precios transparentes, Business Payments ha logrado construir una base de usuarios sólida. Como parte de su esfuerzo continuo por mejorar sus servicios y entender el comportamiento de los usuarios, Business Payments encargó este proyecto a nuestro equipo para realizar un análisis avanzado de insights y cohortes.
+
+Equipo:
+
+- Cristian Largo Reina
+- Albert Bañeres Rovirosa
+- Elvis Ortega Ochoa
+
+## Visión General del Proyecto
+
+En este proyecto, se realizó una extracción de insights accionables, un análisis avanzado de cohortes y una segmentación de datos exhaustiva proporcionada por Business Payments. El objetivo principal fue analizar cohortes de usuarios relevantes, definidas según el período en el que realizaron su primer adelanto de efectivo. Además, se seguió la evolución temporal de métricas clave para estas cohortes y se propuso insights relevantes, así como modelos de regresión y clasificación, que permitirán a Business Payments obtener valiosas perspectivas sobre el comportamiento de los usuarios y el rendimiento de sus servicios financieros.
+
+## Informe Resumido
+Este es un informe resumido de los hallazgos clave del análisis exploratorio y de calidad de datos, así como los insights obtenidos, diseñado para los stakeholders de Business Payments.
+
+### Hallazgos Clave del Análisis Exploratorio
+TBD
+
+### Hallazgos Clave de la Calidad de Datos
+TBD
+
+### Hallazgos Clave de Modelos de Regresión Personalizados
+TBD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- # Desafío Empresarial: Análisis de Insights y Cohortes Avanzados para los Pagos de Business Payments
 
 ## Introducción
 
@@ -40,7 +83,7 @@ Evaluar la calidad del conjunto de datos será un paso esencial, identificando v
 5. **Presentación Ejecutiva y Repositorio de GitHub:** Crear un informe resumido en formato markdown que resuma los hallazgos clave del análisis exploratorio y de calidad de datos, así como los insights obtenidos. Este informe debe estar diseñado para los stakeholders de Business Payments y presentarse con claridad y precisión técnica. Además, este documento será el archivo README del repositorio del proyecto, sirviendo como guía principal para quienes revisen el trabajo realizado.
 
 
-<!-- ## Información Adicional
+## Información Adicional
 
 Business Payments está entusiasmado de obtener perspectivas clave de este análisis para tomar decisiones basadas en datos que mejoren sus servicios financieros y la experiencia del usuario. Tu trabajo desempeñará un papel crucial en la configuración de futuras estrategias.
 
