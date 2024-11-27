@@ -78,11 +78,90 @@ El recall mejoró en algunas clases como money_sent y waiting_user_confirmation,
 
 
 
+### Introspección para detectar usuarios potencialmente fraudulentos
+
+Las fintech enfrentan el reto de prevenir fraudes, que aunque representan menos del 0.3% de transacciones, tienen alto impacto. Este análisis identifica patrones sospechosos como montos inusuales, usuarios inactivos y transacciones rechazadas para mitigar riesgos.
+
+**Métricas clave para detectar usuarios fraudulentos**:
+
+1. Filtrar "transaction_declined" o "rejected": Identificar usuarios con alta incidencia en estos estados para detectar patrones sospechosos.
+   
+2. Transacciones de monto máximo (200): Usuarios con este monto deben considerarse casos sospechosos.
+   
+3. Diferencial entre created_at y updated_at: Diferencias muy cortas pueden indicar intentos de manipulación o fraude.
+ 
+4. Transacciones entre 1-4 AM: Actividad nocturna inusual puede ser indicativa de fraudes.
+ 
+5. "direct_debit_rejected": Identificar usuarios con rechazos en débitos directos como posible señal de fraude.
+
+Tras aplicar los filtros, se identificaron usuarios que aparecen en hasta 3/5 criterios, siendo posibles casos de fraude. Estos user_id se añadieron al dataframe para analizar si realmente son fraudulentos o simples coincidencias.
+
+**Random Forest para detección de falsos positivos**:
+
+El modelo Random Forest evaluó usuarios sospechosos, mostrando su desempeño en precisión, recall, F1-score y accuracy mediante la matriz de confusión y reporte de clasificación para detectar fraudes.
+
+![Random forest salida](https://github.com/elvisortegaec/businessPayments/blob/main/graficos_y_salidas/randomforest_output.PNG?raw=true)
+
+Los resultados de la clasificación de fraude con Random Forest son los siguientes:
+
+Verdaderos Negativos (VN): 4181 transacciones no fraudulentas correctamente identificadas.
+Falsos Positivos (FP): 5 transacciones no fraudulentas clasificadas erróneamente como fraudulentas.
+Falsos Negativos (FN): 17 transacciones fraudulentas clasificadas erróneamente como no fraudulentas.
+Verdaderos Positivos (VP): 9 transacciones fraudulentas correctamente identificadas.
 
 
+**Resultados del modelo Random Forest**:
+
+Precisión:
+
+Fraude (1): 0.64, lo que significa que el 64% de las transacciones clasificadas como fraudulentas realmente lo eran.
+No fraude (0): 1.00, indicando que el 100% de las transacciones clasificadas como no fraudulentas realmente no lo eran.
+
+Recall:
+
+Fraude (1): 0.35, lo que muestra que solo el 35% de las transacciones fraudulentas fueron identificadas correctamente.
+No fraude (0): 1.00, lo que indica que el modelo identificó correctamente el 100% de las transacciones no fraudulentas.
+
+F1-Score:
+
+Fraude (1): 0.45, lo que refleja un desempeño moderado en la detección de fraudes, con un equilibrio entre precisión y recall.
+No fraude (0): 1.00, lo que demuestra un rendimiento casi perfecto en la clasificación de transacciones no fraudulentas.
+
+**Conclusión sobre el uso de Random Forest**:
+
+Bajo desempeño en la detección de fraudes: Aunque el modelo tiene una precisión general alta (99%), su bajo recall para fraudes (0.35) indica que solo una pequeña parte de las transacciones fraudulentas es identificada, lo que requiere mejoras en la detección de fraudes.
+
+Desbalance de clases: El modelo está sesgado hacia la clase mayoritaria (no fraude), lo que explica la alta precisión. Se recomienda explorar técnicas como submuestreo, sobremuestreo o ajustes en el umbral de decisión para mejorar la detección de fraudes sin sacrificar demasiado la precisión.
+
+![histograma](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/distribucion%20potencial%20fraude%20con%20ajuste%20de%200,2.png?raw=true)
 
 
+Este histograma muestra la distribución de usuarios, donde 1 representa usuarios fraudulentos y 0 no fraudulentos. Con un ajuste de 0.2 en el modelo, la mayoría de los nuevos usuarios se clasifican como no fraudulentos. Esto indica que, tal como está operando Business Payments, el modelo está capturando cada vez menos usuarios fraudulentos, lo que sugiere una tendencia preocupante en la detección de fraudes.
 
+![matriz de confusion](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/matriz_confusion_ajustada.png?raw=true)
+
+Esta matriz muestra la segmentación de los resultados utilizando Random Forest: verdadero negativo, falso positivo, falso negativo y verdadero positivo. Podemos observar que, en este caso, se han identificado correctamente 9 usuarios fraudulentos como verdaderos positivos, lo que indica que el modelo ha logrado detectar algunas transacciones fraudulentas, aunque con un número limitado de aciertos.
+
+![top9 fraudes](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/top_9_usuarios_fraudulentos.png?raw=true)
+
+![Curva ROC](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/curva_roc.png?raw=true)
+
+La curva ROC es una herramienta utilizada para evaluar la capacidad discriminativa de un modelo en pruebas diagnósticas dicotómicas. En esta curva, se presenta la sensibilidad (proporción de verdaderos positivos) en el eje vertical y el complemento de la especificidad (proporción de falsos positivos) en el eje horizontal. Los valores de ambos ejes van de 0 a 1, lo que refleja una escala del 0% al 100%. La curva se forma conectando los puntos correspondientes a distintos umbrales de corte.
+
+El AUC (Área Bajo la Curva) es una métrica clave para interpretar la capacidad discriminativa del modelo:
+
+0.5: El modelo no tiene capacidad discriminativa.
+0.5-0.6: Test malo.
+0.6-0.75: Test regular.
+0.75-0.9: Test bueno.
+0.9-0.97: Test muy bueno.
+0.97-1: Test excelente.
+
+Este análisis ayuda a seleccionar el mejor punto de corte y comparar la efectividad de diferentes modelos.
+
+![importancia](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/importancia_caracteristicas.png?raw=true)
+
+En este gráfico de barras podemos observar la importancia de cada variable en la predicción de usuarios fraudulentos. El peso asignado a cada variable indica su influencia en la determinación de si un usuario es fraudulento o no. Las barras más largas representan las variables que tienen mayor impacto en la clasificación, lo que permite identificar los factores más relevantes para predecir el fraude.
 
 
 
