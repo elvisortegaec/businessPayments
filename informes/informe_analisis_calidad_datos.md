@@ -56,6 +56,10 @@ Valores faltantes en extract - cash request - data analyst.csv:
 Filas duplicadas en extract - cash request - data analyst.csv:
 - 0
 
+Graficamente los valores faltantes en extract - cash request - data analyst se puden observar de la siguiente manera:
+
+![alt text](../graficos_y_salidas/valores_perdidos_finales_para_cash_request_y_fees.png)
+
 **Basic Information extract - fees - data analyst - .csv**:
 
 El DataFrame tiene 21061 entradas, con índices que van de 0 a 21060. Contiene un total de 13 columnas con los siguientes tipos de datos:
@@ -101,6 +105,10 @@ Valores faltantes en extract - fees - data analyst - .csv:
 
 Filas duplicadas en extract - fees - data analyst - .csv:
 - 0
+
+Graficamente los valores faltantes en extract - fees - data analyst se puden observar de la siguiente manera:
+
+![alt text](../graficos_y_salidas/valores_perdidos_iniciales_para_fees.png)
 
 Se comprobó que la columna `id` de la primera base de datos corresponde a la columna `cash_request_id` de la segunda base de datos. En este sentido, se decidió fusionar las dos bases de datos considerando estos campos como equivalentes. 2913 registros de cash request no tienen un valor fee asociado. Dado que los datos no asociados no son de interés para el análisis de las métricas, se decidió tomar en cuenta solo los registros de cash request que tienen un registro de fee asociado. Por otro lado, dado que las columnas `id`, `created_at` y `updated_at` tienen el mismo nombre en ambas bases de datos, se decidió añadir el sufijo `_fee` a todas las columnas de la segunda base de datos, excepto `cash_request_id`.
 
@@ -174,6 +182,8 @@ A continuación se muestra el número de valores no nulos por columna:
 
 El uso de memoria del DataFrame es de aproximadamente 4.7 MB.
 
+Se verificó que los valores nulos de `user_id` corresponden a los valores de `deleted_account_id`. En ese sentido, se rellenaron los valores nulos en `user_id` usando `deleted_account_id`. Se recuperaron 906 datos perdidos en `user_id`.
+
 **Evaluación de la calidad de los datos para merged_cash_request_fees.csv**
 
 Valores faltantes en merged_cash_request_fees.csv:
@@ -182,7 +192,7 @@ Valores faltantes en merged_cash_request_fees.csv:
 - `status`: 0
 - `created_at`: 0
 - `updated_at`: 0
-- `user_id`: 906
+- `user_id`: 0
 - `moderated_at`: 9773
 - `deleted_account_id`: 20151
 - `reimbursement_date`: 0
@@ -216,7 +226,6 @@ Seguidamente, se procedió a documentar el proceso para completar los valores fa
 
 | Nombre de la Columna           | Código   | Explicación                                      |
 |--------------------------------|----------|--------------------------------------------------|
-| user_id                        | Null     | ?                                                |
 | moderated_at                   | 98       | No necesita una revisión manual                  |
 | deleted_account_id             | 98888888 | No hay cuenta eliminada                          |
 | cash_request_received_date     | 98       | No se envió un débito directo SEPA               |
@@ -225,7 +234,7 @@ Seguidamente, se procedió a documentar el proceso para completar los valores fa
 | recovery_status                | 98       | La solicitud de efectivo nunca tuvo un incidente de pago |
 | reco_creation                  | Null     | ?                                                |
 | reco_last_update               | Null     | ?                                                |
-| category_fee                   | Null     | ?                                                |
+| category_fee                   | 98       | No incident                                      |
 | paid_at_fee                    | Null     | ?                                                |
 | from_date_fee                  | 98       | No hay tarifas pospuestas                        |
 | to_date_fee                    | 98       | No hay tarifas pospuestas                        |
@@ -266,7 +275,11 @@ Valores faltantes en cleaned_merged_cash_request_fees.csv:
 Filas duplicadas en cleaned_merged_cash_request_fees.csv:
 - 0
 
-Consecuentemente, fue necesario convertir el tipo de datos de las columnas de interés a tipos que faciliten el manejo de los datos en las métricas. Las columnas `created_at` y `created_at_fee` se cambiaron de tipo de datos de objeto a tipo de fecha.
+Graficamente los valores `Null` en cleaned_merged_cash_request_fees se puden observar de la siguiente manera:
+
+![alt text](../graficos_y_salidas/valores_perdidos_finales_para_cash_request_y_fees.png)
+
+Consecuentemente, fue necesario convertir el tipo de datos de las columnas de interés a tipos que faciliten el manejo de los datos en las métricas. Las columnas `created_at` y `created_at_fee` se cambiaron de tipo de datos de objeto a tipo de fecha. A partir de ese formato, se crearon dos nuevas columnas, `cohort` y `month`, con la finalidad de facilitar en análisis de datos por cohortes y meses, tanto de las fechas de creación de las solicitudes de dinero como de las tasas aplicadas.
 
 **Conversión de las columnas 'created_at' and 'created_at_fee' a formato de fecha**:
 
@@ -346,6 +359,21 @@ Evaluación de la calidad de los datos para la columna: `created_at_fee`
 - Valores faltantes en `created_at_fee`: 0
 - Fechas inválidas en `created_at_fee`: 0
 
-4. **Métricas Acumuladas por Cohorte:** Proponer y calcular métricas acumuladas que proporcionen perspectivas adicionales para la extracción de insights accionables.
+4. **Métricas Acumuladas por Cohorte:** Proponer y calcular métricas acumuladas que proporcionen perspectivas adicionales para la extracción de insights accionables. ("status")
 
-To be defined
+Evaluating data quality for column: `status`
+
+- Missing values in status: 0
+
+- Count of `approved` in status: 0
+- Count of `money_sent` in status: 0
+- Count of `rejected` in status: 0
+- Count of `pending` in status: 0
+- Count of `transaction_declined` in status: 48
+- Count of `waiting_user_confirmation` in status: 0
+- Count of `direct_debit_rejected` in status: 1858
+- Count of `canceled` in status: 6
+- Count of `direct_debit_sent` in status: 72
+- Count of `waiting_reimbursement` in status: 0
+- Count of `active` in status: 155
+- Count of `money_back` in status: 18918
