@@ -27,7 +27,10 @@ TBD
 TBD
 
 ### Hallazgos Clave de Modelos de Regresión Personalizados
-TBD
+Análisis y predicción de transacciones en Business Payments usando regresión lineal, para anticipar incidencias y optimizar la gestión.
+Hemos decidido ir a predecir la variable "status" y la variable "recovery_status" para esta rúbrica. 
+![matriz correlacion](https://github.com/arboldeku/businessPayments/raw/regresion/graficos_y_salidas/matriz_correlacion_numericas.png?raw=true)
+
 
 
 
