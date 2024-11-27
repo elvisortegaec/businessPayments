@@ -56,6 +56,7 @@ Valores faltantes en extract - cash request - data analyst.csv:
 Filas duplicadas en extract - cash request - data analyst.csv:
 - 0
 
+Graficamente los valores faltantes en extract - cash request - data analyst se puden observar de la siguiente manera: 
 **Basic Information extract - fees - data analyst - .csv**:
 
 El DataFrame tiene 21061 entradas, con índices que van de 0 a 21060. Contiene un total de 13 columnas con los siguientes tipos de datos:
