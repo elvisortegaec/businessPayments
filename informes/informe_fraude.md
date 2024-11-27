@@ -82,3 +82,54 @@ Bajo desempeño en la detección de fraudes: A pesar de una precisión general a
 
 Desbalance de clases: El modelo está muy sesgado hacia la clase mayoritaria (no fraude), lo que explica su alta precisión general. Para abordar esto, podrían explorarse técnicas como submuestreo, sobremuestreo, o ajustes en el umbral de decisión para mejorar la detección de fraudes sin afectar tanto la precisión.
 
+#### Gráficos para representar los hallazgos:
+
+##### Histograma de usuarios potencialmente fraudulentos y predicción: 
+
+![Potencial fraude ajuste 0,2](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/distribucion%20potencial%20fraude%20con%20ajuste%20de%200,2.png?raw=true)
+
+Este histograma nos muestra cómo podemos apreciar la mayoria de usuarios están distribuidos, siendo 1 fraudulentos y 0 no fraudulentos. Podemos apreciar que la predicción del modelo, con ajuste de 0,2 nos muestra que la mayoría de nuevos usuarios que tendremos serán no fraudulentos, és deicr que tal y como está haciendo su linea de negocio Business Payments, está atrapando en tendencia cada vez menos usuarios fraudulentos. 
+
+##### Matriz de confusión ajustada:
+
+![Matriz de confusión ajustada](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/matriz_confusion_ajustada.png?raw=true)
+
+Ésta matriz nos indica la segmentación que hemos hecho previamente con el random forest de: Verdadero negativo, falso positivo, falso negativo y verdadero positivo. Podemos apreciar cómo si se han detectado 9 usuarios que son verdaderos positivos, en este caso los fraudulentos.
+
+##### Los 9 usuarios fraudulentos:
+
+![9 Usuarios fraudulentos](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/top_9_usuarios_fraudulentos.png?raw=true)
+
+##### Curva ROC de predicción de fraude:
+
+![Curva ROC](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/curva_roc.png?raw=true)
+
+La curva ROC es una herramienta estadística que se utiliza para evaluar la capacidad discriminativa de una prueba diagnóstica dicotómica. Se trata de curvas en las que se presenta la sensibilidad en función de los falsos positivos (complementario de la especificidad) para distintos puntos de corte. Son útiles para elegir el punto de corte más adecuado de una prueba, conocer el rendimiento global de esta y comparar la capacidad discriminativa de 2 o más pruebas diagnósticas.
+
+La sensibilidad o proporción de verdaderos positivos se sitúa en el eje de ordenadas y el complemento de la especificidad (1−especificidad) o proporción de falsos positivos, en el de abscisas4. Ambos ejes engloban valores entre 0 y 1 (0 a 100%). La curva ROC se dibuja uniendo los pares de valores (sensibilidad y complemento de la especificidad) correspondientes a cada punto de corte.
+
+A título orientativo, podemos usar los siguientes intervalos para interpretar los valores de AUC:
+
+
+0,5: el modelo no tiene capacidad discriminativa.
+
+-
+0,5-0,6: test malo.
+
+-
+0,6-0,75: test regular.
+
+-
+0,75-0,9: test bueno.
+
+-
+0,9-0,97: test muy bueno.
+
+-
+0,97-1: test excelente.
+
+##### Importancia de características para determinar fraude:
+
+![Importancia caracteristicas fraude](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/importancia_caracteristicas.png?raw=true)
+
+En este gráfico de barras podemos apreciar la importancia que ha tenido (peso) a la hora de determinar que variables són las que más influyen para que un usuario sea fraudulento. 
