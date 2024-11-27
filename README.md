@@ -31,6 +31,51 @@ Análisis y predicción de transacciones en Business Payments usando regresión 
 Hemos decidido ir a predecir la variable "status" y la variable "recovery_status" para esta rúbrica. 
 ![matriz correlacion](https://github.com/arboldeku/businessPayments/raw/regresion/graficos_y_salidas/matriz_correlacion_numericas.png?raw=true)
 
+Podemos ver que los campos que están relacionados son los de ID, variables que a nivel predictorio nos aportan poca capacidad predictiva.
+
+![Salido MCO](https://github.com/arboldeku/businessPayments/raw/regresion/graficos_y_salidas/modelo_mco.PNG?raw=true)
+
+El 40.1% de la variabilidad en la variable dependiente (recovery_status_encoded) está explicada por las variables independientes en el modelo con el R².
+
+También obtenemos que el p-value de distinitas variables es menor a 0,005, lo que nos da una significancia positiva confirmada.
+
+**Regresión Lineal**:
+
+Error Cuadrático Medio (MSE): 0.7876582240511442
+R2: 0.35304526580937523
+Coeficientes: [-0.00164849 -0.0155265   0.61151403  0.81330906]
+Intercepto: 0.5015476024153426
+
+El MSE nos da un valor muy alto, ya que cuanto menor sea menor será el error del modelo.
+
+El R² tampoco captura el 65% de la variabilidad de recovery_status.
+
+Vemos que category_fee(0,8133) y fee_status (0,6115) són las variables que más explican el modelo.
+
+**Regresión Logística para predecir "status"**
+
+Hemos utilizado una regresión logística multinomial para predecir la variable categórica status de un conjunto de datos. En este caso hemos implementado una función sigmoide.
+
+Se usó la función log-loss para medir errores entre predicciones y etiquetas. El modelo obtuvo un **89.53%** de precisión en pruebas después de:
+
+1. Implementar una función log-loss y hacer One-Hot encoding de la variable status (categórica).
+2. Entrenar al modelo introduciendo pesos y sesgos.
+3. Hacer la predicción con los pesos y los sesgos ya en el modelo.
+
+Concluimos que se muestra un rendimiento sólido y esto implica su capacidad para clasificar correctamente transacciones según su estado.
+
+**Predicción y Recall**
+
+![Recall y prediccion](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/recall_sin_smot.png?raw=true)
+
+El modelo predice excelentemente la clase "transaction_declined" (90% precisión, 100% recall), pero falla en las otras clases (precisión y F1-score de 0.00). La precisión global es 0.90, dominada por la clase mayoritaria, indicando un problema de desbalance de clases.
+
+Es por eso que introducimos hiperparametros y utilizando el algoritmo SMOTE, creamos de manera sintética observaciones en las clases más desvalanceadas para ver que capacidad de predicción y de recall tiene el modelo entonces:
+
+![SMOTE](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/recall_con_smot.png?raw=true)
+
+El recall mejoró en algunas clases como money_sent y waiting_user_confirmation, pero sigue bajo en approved (~0.4) y disminuyó en transaction_declined. Esto indica riesgo de falsos positivos y una predictividad alta solo en transaction_declined.
+
 
 
 
