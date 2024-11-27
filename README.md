@@ -11,6 +11,8 @@ Equipo:
 - Albert Bañeres Rovirosa
 - Elvis Ortega Ochoa
 
+Se puede ver la organización y planificación de las tareas del equipo en la pestaña Projects --- https://github.com/elvisortegaec/businessPayments/projects
+
 ## Visión General del Proyecto
 
 En este proyecto, se realizó una extracción de insights accionables, un análisis avanzado de cohortes y una segmentación de datos exhaustiva proporcionada por Business Payments. El objetivo principal fue analizar cohortes de usuarios relevantes, definidas según el período en el que realizaron su primer adelanto de efectivo. Además, se seguió la evolución temporal de métricas clave para estas cohortes y se propuso insights relevantes, así como modelos de regresión y clasificación, que permitirán a Business Payments obtener valiosas perspectivas sobre el comportamiento de los usuarios y el rendimiento de sus servicios financieros.
