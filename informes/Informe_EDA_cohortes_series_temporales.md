@@ -17,26 +17,18 @@ Inicialmente realizamos un grafico de barras de la variable Recovery Status para
 
 `Variables Numericas`
 
-Resumen de estadísticas de variables numéricas:
-                 id        amount  deleted_account_id        id_fee  \
-count  21057.000000  21057.000000        2.105700e+04  21057.000000   
-mean   16318.449162     81.833547        9.463483e+07  10646.670228   
-std     6656.149949     26.945058        2.006308e+07   6099.136169   
-min     1456.000000      1.000000        3.857000e+03      1.000000   
-25%    11745.000000     50.000000        9.888889e+07   5388.000000   
-50%    17160.000000    100.000000        9.888889e+07  10654.000000   
-75%    21796.000000    100.000000        9.888889e+07  15926.000000   
-max    27010.000000    200.000000        9.888889e+07  21193.000000   
+## Resumen de estadísticas de variables numéricas
 
-       cash_request_id  total_amount_fee     time_diff  
-count     21057.000000      21057.000000  2.105700e+04  
-mean      16318.449162          5.000237  8.327430e+06  
-std        6656.149949          0.034457  3.754475e+06  
-min        1456.000000          5.000000  2.433921e+01  
-25%       11745.000000          5.000000  5.172280e+06  
-50%       17160.000000          5.000000  7.416928e+06  
-75%       21796.000000          5.000000  1.106068e+07  
-max       27010.000000         10.000000  2.330787e+07 
+| Variable            | Count     | Mean          | Std           | Min           | 25%          | 50%          | 75%          | Max           |
+|---------------------|-----------|---------------|---------------|---------------|--------------|--------------|--------------|---------------|
+| id                 | 21057     | 16318.45      | 6656.15       | 1456.00       | 11745.00     | 17160.00     | 21796.00     | 27010.00      |
+| amount             | 21057     | 81.83         | 26.95         | 1.00          | 50.00        | 100.00       | 100.00       | 200.00        |
+| deleted_account_id | 21057     | 94634827.00   | 20063077.00   | 3857.00       | 98888889.00  | 98888889.00  | 98888889.00  | 98888889.00   |
+| id_fee             | 21057     | 10646.67      | 6099.14       | 1.00          | 5388.00      | 10654.00     | 15926.00     | 21193.00      |
+| cash_request_id    | 21057     | 16318.45      | 6656.15       | 1456.00       | 11745.00     | 17160.00     | 21796.00     | 27010.00      |
+| total_amount_fee   | 21057     | 5.00          | 0.03          | 5.00          | 5.00         | 5.00         | 5.00         | 10.00         |
+| time_diff          | 21057     | 8327430.00    | 3754475.00    | 24.34         | 5172280.00   | 7416928.00   | 11060680.00  | 23307870.00   |
+
 
 **amount** *tiene un comportamiento sesgado hacia valores altos (mediana en 100). Esto podría afectar la predicción y merece exploración.*
 
@@ -52,64 +44,38 @@ max       27010.000000         10.000000  2.330787e+07
 
 `Variables categóricas`
 
-Frecuencias de las variables categóricas principales:
+## Frecuencias de las Variables Categóricas Principales
 
-status:
-status
-money_back               18918
-direct_debit_rejected     1858
-active                     155
-direct_debit_sent           72
-transaction_declined        48
-canceled                     6
-Name: count, dtype: int64
+### **Status**
+| Status                   | Frecuencia |
+|--------------------------|------------|
+| money_back               | 18,918     |
+| direct_debit_rejected    | 1,858      |
+| active                   | 155        |
+| direct_debit_sent        | 72         |
+| transaction_declined     | 48         |
+| canceled                 | 6          |
 
-user_id:
-user_id
-Null        906
-16391.0      37
-15593.0      28
-3045.0       25
-17144.0      24
-           ... 
-83051.0       1
-86783.0       1
-102737.0      1
-3377.0        1
-...
-charge_moment_fee
-after     16720
-before     4337
-Name: count, dtype: int64
+---
 
+### **User ID**
+| User ID      | Frecuencia |
+|--------------|------------|
+| Null         | 906        |
+| 16391.0      | 37         |
+| 15593.0      | 28         |
+| 3045.0       | 25         |
+| 17144.0      | 24         |
+| ...          | ...        |
 
+---
 
-**Análisis Bivariado**
+### **Charge Moment Fee**
+| Charge Moment Fee | Frecuencia |
+|-------------------|------------|
+| after            | 16,720     |
+| before           | 4,337      |
 
-Estadísticas agrupadas por recovery_status:
-                                id      amount  deleted_account_id  \
-recovery_status                                                      
-98                    17565.157311   82.174398        9.555901e+07   
-cancelled             23127.000000  100.000000        9.888889e+07   
-completed             13851.775935   81.262487        9.149094e+07   
-pending               13494.547022   80.710554        9.584097e+07   
-pending_direct_debit  14515.852941   85.588235        9.888889e+07   
-
-                            id_fee  cash_request_id  total_amount_fee  \
-recovery_status                                                         
-98                    11195.305091     17565.157311          5.000353   
-cancelled             16008.000000     23127.000000          5.000000   
-completed              9281.886957     13851.775935          5.000000   
-pending               10130.268548     13494.547022          5.000000   
-pending_direct_debit   9516.352941     14515.852941          5.000000   
-
-                         time_diff  
-recovery_status                     
-98                    7.822635e+06  
-cancelled             5.363163e+06  
-completed             1.013489e+07  
-pending               7.375124e+06  
-pending_direct_debit  9.421811e+06 
 
 
 **Correlación entre variables Numéricas**
