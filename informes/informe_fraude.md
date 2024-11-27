@@ -38,3 +38,47 @@ Este estatus se refiere a las transacciones de débito directo que han sido rech
 
 Una vez hemos aplicado todos estos filtros para todas las transacciones, nos va a devolver los user_id que coinciden con cada filtro y el conteo de cuántas veces aparecen en los distintos filtros. Nos encontramos que el número máximo de filtros al que aparecen un grupo de usuarios es **3/5**, esto nos indica que serían los candidatos a ser usuarios potencialmente fraudulentos. Ahora que los tenemos identificados, los capturamos añadiendo una columna sólo de estos user_id en el datframe, para a partir de ahí determinar si estamos hablando de verdaderos usuarios fraudulentos o simplemente se trata de una coincidencia. 
 
+#### Uso de Random Forest para predecir verdaderos positivos y falsos positivos:
+![salida random forest](https://github.com/arboldeku/businessPayments/blob/regresion/graficos_y_salidas/randomforest_output.PNG?raw=true)
+
+El análisis de los resultados de la matriz de confusión y del reporte de clasificación generado por el modelo de Random Forest para predecir el fraude transaccional muestra cómo el modelo ha clasificado a los usuarios potencialmente peligrosos, y cómo se desempeña en términos de precisión, recall, f1-score y accuracy.
+
+##### 1. Matriz de Confusión
+
+La matriz de confusión muestra cómo el modelo clasificó las transacciones, dividiendo las predicciones en las siguientes categorías:
+
+    Predicción: No fraude (0)	Predicción: Fraude (1)
+
+    Real: No fraude (0)	4181 (verdaderos negativos)	5 (falsos positivos)
+    Real: Fraude (1)	17 (falsos negativos)	9 (verdaderos positivos)
+    
+Verdaderos Negativos (VN): 4181 transacciones que eran no fraudulentas y fueron correctamente identificadas como no fraudulentas.
+Falsos Positivos (FP): 5 transacciones que no eran fraudulentas pero fueron clasificadas erróneamente como fraudulentas.
+Falsos Negativos (FN): 17 transacciones fraudulentas que fueron clasificadas erróneamente como no fraudulentas.
+Verdaderos Positivos (VP): 9 transacciones fraudulentas que fueron correctamente identificadas como fraudulentas.
+
+##### 2. Precisión:
+
+Para el fraude (1): 0.64. Esto significa que, de todas las transacciones que el modelo identificó como fraudulentas, el 64% fueron realmente fraudulentas.
+
+Para el no fraude (0): 1.00. Esto indica que, de todas las transacciones que el modelo clasificó como no fraudulentas, el 100% eran realmente no fraudulentas.
+
+##### 3. Recall:
+
+Para el fraude (1): 0.35. Este valor indica que el modelo identificó correctamente solo el 35% de las transacciones realmente fraudulentas.
+Esto es relativamente bajo y sugiere que el modelo no está capturando todos los fraudes.
+
+Para el no fraude (0): 1.00. Esto muestra que el modelo detectó correctamente el 100% de las transacciones no fraudulentas.
+
+##### 4. F1-Score:
+
+Para el fraude (1): 0.45. El F1-score es una medida balanceada de la precisión y el recall. Un valor de 0.45 sugiere que el modelo tiene un desempeño moderado en cuanto a la detección de fraudes, ya que no está capturando una gran parte de los fraudes reales, aunque cuando predice fraude, suele ser correcto.
+
+Para el no fraude (0): 1.00. La excelente puntuación en esta categoría muestra que el modelo tiene un rendimiento casi perfecto al identificar transacciones no fraudulentas.
+
+**Conclusión usando Random Forest**:
+
+Bajo desempeño en la detección de fraudes: A pesar de una precisión general alta (99%), el modelo tiene un bajo recall para fraudes (0.35). Esto significa que solo una fracción de las transacciones fraudulentas es identificada correctamente, lo que indica que el modelo necesita mejorar en cuanto a la detección de fraudes.
+
+Desbalance de clases: El modelo está muy sesgado hacia la clase mayoritaria (no fraude), lo que explica su alta precisión general. Para abordar esto, podrían explorarse técnicas como submuestreo, sobremuestreo, o ajustes en el umbral de decisión para mejorar la detección de fraudes sin afectar tanto la precisión.
+
