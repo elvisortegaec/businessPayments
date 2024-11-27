@@ -102,30 +102,17 @@ Inicialmente realizamos un grafico de barras de la variable Recovery Status para
 
 **Análisis Bivariado**
 
-Estadísticas agrupadas por recovery_status:
-                                id      amount  deleted_account_id  \
-recovery_status                                                      
-98                    17565.157311   82.174398        9.555901e+07   
-cancelled             23127.000000  100.000000        9.888889e+07   
-completed             13851.775935   81.262487        9.149094e+07   
-pending               13494.547022   80.710554        9.584097e+07   
-pending_direct_debit  14515.852941   85.588235        9.888889e+07   
+## Estadísticas Agrupadas por `recovery_status`
 
-                            id_fee  cash_request_id  total_amount_fee  \
-recovery_status                                                         
-98                    11195.305091     17565.157311          5.000353   
-cancelled             16008.000000     23127.000000          5.000000   
-completed              9281.886957     13851.775935          5.000000   
-pending               10130.268548     13494.547022          5.000000   
-pending_direct_debit   9516.352941     14515.852941          5.000000   
+| Recovery Status      | ID          | Amount    | Deleted Account ID | ID Fee      | Cash Request ID | Total Amount Fee | Time Diff     |
+|----------------------|-------------|-----------|---------------------|-------------|-----------------|------------------|---------------|
+| 98                   | 17565.16    | 82.17     | 9.56e+07           | 11195.31    | 17565.16        | 5.000353         | 7.82e+06      |
+| Cancelled            | 23127.00    | 100.00    | 9.89e+07           | 16008.00    | 23127.00        | 5.000000         | 5.36e+06      |
+| Completed            | 13851.78    | 81.26     | 9.15e+07           | 9281.89     | 13851.78        | 5.000000         | 1.01e+07      |
+| Pending              | 13494.55    | 80.71     | 9.58e+07           | 10130.27    | 13494.55        | 5.000000         | 7.38e+06      |
+| Pending Direct Debit | 14515.85    | 85.59     | 9.89e+07           | 9516.35     | 14515.85        | 5.000000         | 9.42e+06      |
 
-                         time_diff  
-recovery_status                     
-98                    7.822635e+06  
-cancelled             5.363163e+06  
-completed             1.013489e+07  
-pending               7.375124e+06  
-pending_direct_debit  9.421811e+06 
+
 
 
 **Correlación entre variables Numéricas**

@@ -76,6 +76,19 @@ Inicialmente realizamos un grafico de barras de la variable Recovery Status para
 | after            | 16,720     |
 | before           | 4,337      |
 
+**Análisis Bivariado**
+
+## Estadísticas Agrupadas por `recovery_status`
+
+| Recovery Status      | ID          | Amount    | Deleted Account ID | ID Fee      | Cash Request ID | Total Amount Fee | Time Diff     |
+|----------------------|-------------|-----------|---------------------|-------------|-----------------|------------------|---------------|
+| 98                   | 17565.16    | 82.17     | 9.56e+07           | 11195.31    | 17565.16        | 5.000353         | 7.82e+06      |
+| Cancelled            | 23127.00    | 100.00    | 9.89e+07           | 16008.00    | 23127.00        | 5.000000         | 5.36e+06      |
+| Completed            | 13851.78    | 81.26     | 9.15e+07           | 9281.89     | 13851.78        | 5.000000         | 1.01e+07      |
+| Pending              | 13494.55    | 80.71     | 9.58e+07           | 10130.27    | 13494.55        | 5.000000         | 7.38e+06      |
+| Pending Direct Debit | 14515.85    | 85.59     | 9.89e+07           | 9516.35     | 14515.85        | 5.000000         | 9.42e+06      |
+
+
 
 
 **Correlación entre variables Numéricas**
