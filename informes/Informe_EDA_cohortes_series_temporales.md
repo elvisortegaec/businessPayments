@@ -6,7 +6,7 @@ Resultados del análisis exploratorio de los Datos, utilizando diversas gráfica
 
 Inicialmente realizamos un grafico de barras de la variable Recovery Status para ver su distribución ya que es la que queremos predecir inicialmente:
 
-![Distribución de Recovery Status](graficos_y_salidas/d_recovery_status.png)
+![Distribución de Recovery Status](../graficos_y_salidas/d_recovery_status.png)
 
 *La mayor parte de los valores se encuentran como que nunca se ha recibido ninguna incidencia sobre ese cash request*
 
@@ -44,9 +44,9 @@ max       27010.000000         10.000000  2.330787e+07
 
 **time_diff** *tiene una variación significativa y podría ser clave en la predicción si se relaciona con recovery_status.*
 
-![Distribución de Amount](graficos_y_salidas/d_amount.png)
+![Distribución de Amount](../graficos_y_salidas/d_amount.png)
 
-![Distribución de Total Amount Fee](graficos_y_salidas/d_total_amount_fee.png)
+![Distribución de Total Amount Fee](../graficos_y_salidas/d_total_amount_fee.png)
 
 
 
@@ -114,15 +114,15 @@ pending_direct_debit  9.421811e+06
 
 **Correlación entre variables Numéricas**
 
-![Correlación variables númericas](graficos_y_salidas/correlación_var_num.png)
+![Correlación variables númericas](../graficos_y_salidas/correlación_var_num.png)
 
 **Distribución de Transfer Type vs Recovery Stats**
 
-![Distribución de Transfer Type vs Recovery Stats](graficos_y_salidas/transfer_type_vs_recovery_status.png)
+![Distribución de Transfer Type vs Recovery Stats](../graficos_y_salidas/transfer_type_vs_recovery_status.png)
 
 **Distribución de Time Diff vs Recovery Stats**
 
-![Distribución de Time Diff vs Recovery Stats](graficos_y_salidas/time_diff_vs_recovery_status.png)
+![Distribución de Time Diff vs Recovery Stats](../graficos_y_salidas/time_diff_vs_recovery_status.png)
 
 
 **Variables a tener en cuenta modelo predictivo**
@@ -144,19 +144,19 @@ pending_direct_debit  9.421811e+06
 
 La frecuencia de uso aumenta drásticamente del segundo al tercer trimestre, pero muestra una ligera reducción en el cuarto trimestre, aunque se mantiene en un nivel alto en comparación con el segundo trimestre. Esto podría indicar un crecimiento inicial en el uso del servicio, seguido de una estabilización.
 
-![Frecuencia de Uso del Servicio segmetado por trimestres](graficos_y_salidas/uso_servicio_cohortes_trimestre.png)
+![Frecuencia de Uso del Servicio segmetado por trimestres](../graficos_y_salidas/uso_servicio_cohortes_trimestre.png)
 
 **Tasa de incidentes**
 
 Hay una clara tendencia a la baja en la tasa de incidentes a medida que avanza el tiempo, lo que podría indicar una mejora en la gestión de incidentes o un cambio positivo en las condiciones subyacentes.
 
-![Tasa de incidentes](graficos_y_salidas/tasa_incidentes_cohortes_trimestre.png)
+![Tasa de incidentes](../graficos_y_salidas/tasa_incidentes_cohortes_trimestre.png)
 
 **Ingresos Generados por Cohorte**
 
 La cohorte 2020Q3 generó los mayores ingresos, destacándose como un modelo exitoso que debería replicarse. La cohorte 2020Q4 tiene buen potencial, pero es necesario acelerar la conversión de clientes a estados generadores de ingresos. Optimizar estrategias en cohortes recientes puede maximizar las ganancias futuras.
 
-![Ingresos Generados por Cohorte](graficos_y_salidas/ingresos_generados_cohortes.png)
+![Ingresos Generados por Cohorte](../graficos_y_salidas/ingresos_generados_cohortes.png)
 
 **Frecuencia de Recovery Status por Cohortes y Trimestres**
 
@@ -166,7 +166,7 @@ El número de clientes que completaron (1-completed) el proceso parece ser signi
 
 Estados como 1-cancelled y 1-pending_direct_debit son poco frecuentes, mostrando que son escenarios menos comunes en estos datos.
 
-![Frecuencia de Recovery Status por Cohortes y Trimestres](graficos_y_salidas/frecuencia_recovery_stats_cohortes_trimestres.png)
+![Frecuencia de Recovery Status por Cohortes y Trimestres](../graficos_y_salidas/frecuencia_recovery_stats_cohortes_trimestres.png)
 
 **Proporción de Recovery Status por Cohortes y Trimestres**
 
@@ -176,7 +176,7 @@ Lecciones de cohortes anteriores: Las cohortes 2020Q2 y 2020Q3 muestran mejores 
 
 Estrategias proactivas: Diseñar iniciativas específicas para mover a más clientes hacia 1-completed podría mejorar la eficiencia operativa y generar más ingresos. Esto podría incluir automatización, seguimiento personalizado o incentivos para avanzar en el proceso.
 
-![Proporción de Recovery Status por Cohortes y Trimestres](graficos_y_salidas/proporción_recovery_stats_cohortes_trimestres.png)
+![Proporción de Recovery Status por Cohortes y Trimestres](../graficos_y_salidas/proporción_recovery_stats_cohortes_trimestres.png)
 
 
 
@@ -184,7 +184,7 @@ Estrategias proactivas: Diseñar iniciativas específicas para mover a más clie
 
 El servicio tiene una tendencia ascendente en la frecuencia de ingresos por semana, con un aumento significativo en los trimestres.
 
-![Frecuencia de Ingresos por semana](graficos_y_salidas/ingresos_st.png)
+![Frecuencia de Ingresos por semana](../graficos_y_salidas/ingresos_st.png)
 
 
 **Elasticidad Temporal de ingresos por semana**
@@ -193,27 +193,27 @@ En la semana que incluye el 2020-05-10, la elasticidad temporal alcanza un pico 
 
 En general, los ingresos son estables a lo largo del tiempo, con oscilaciones moderadas.
 
-![Elasticidad Temporal de ingresos por semana](graficos_y_salidas/elasticidad_ingresos_semana.png)
+![Elasticidad Temporal de ingresos por semana](../graficos_y_salidas/elasticidad_ingresos_semana.png)
 
 
 **Series Temporales de Tipos de Usuario**
 
 Observamos la clara diferencia de Tendencia entre los nuevos usuarios y la recurrencia de los usuarios ya existentes, indicativo que la captación de nuevos usuarios esta funcionando muy bien pero no se esta logrando la recurrencia de los usuarios ya existentes.
 
-![Series Temporales de Tipos de Usuario](graficos_y_salidas/tipos_usuario_st.png)
+![Series Temporales de Tipos de Usuario](../graficos_y_salidas/tipos_usuario_st.png)
 
 **Predicciones Tipos de Usuario**
 
 Vemos como a pesar de la creciente tendencia que se mantiene sobre los nuevos usarios, cuesta incrementar la retención de ellos, indicativo para mejorar la experiencia de usuario y la calidad del servicio.
 
-![Predicciones Tipos de Usuario](graficos_y_salidas/pred_usuarios_st.png)
+![Predicciones Tipos de Usuario](../graficos_y_salidas/pred_usuarios_st.png)
 
 
 **Distribución de Segmentos de Usuario (RFM)**
 
 Observamos como la mayor parte de los usuarios se encuentran en el segundo segmento mas bajo del Estudio, lo que nos podria dar un indicio de que la estrategia de marketing actual no esta siendo efectiva para atraer a todos esos clientes potenciales.
 
-![Distribución de Segmentos de Usuario](graficos_y_salidas/d_segmentos_usuario.png)
+![Distribución de Segmentos de Usuario](../graficos_y_salidas/d_segmentos_usuario.png)
 
 **Distribución de Segmentos de Usuario Potential Loyalist (RFM)**
 
@@ -221,10 +221,10 @@ Recency: Muchos clientes están activos recientemente, lo que sugiere un buen ni
 Frequency: La baja frecuencia general indica que los clientes interactúan pocas veces y podrían necesitar incentivos para incrementar la frecuencia.
 Monetary: Aunque el gasto promedio es moderado, los valores atípicos altos representan clientes con un mayor potencial económico.
 
-![Distribución de Segmentos de Usuario Potential Loyalist](graficos_y_salidas/d_rfm_potential_loyalist.png)
+![Distribución de Segmentos de Usuario Potential Loyalist](../graficos_y_salidas/d_rfm_potential_loyalist.png)
 
 **Comparación en Gasto de Segmentos de Usuario (RFM)**
 
 Al igual que en la Distribución de los Segmentos de usuario, esa gran masa donde se encuentran los perfiles que pueden ser potencialmente clientes son los perfiles que estan gastando más en nuestro servicio.
 
-![Comparación en Gasto de Segmentos de Usuario](graficos_y_salidas/comp_gasto_segmentos.png)
+![Comparación en Gasto de Segmentos de Usuario](../graficos_y_salidas/comp_gasto_segmentos.png)
