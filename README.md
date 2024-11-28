@@ -92,7 +92,7 @@ Valores faltantes en cleaned_merged_cash_request_fees.csv:
 - `to_date_fee`: 0
 - `charge_moment_fee`: 0
 
-Filas duplicadas en merged_cash_request_fees.csv:
+Filas duplicadas en cleaned_merged_cash_request_fees.csv:
 - 0
 
 Graficamente los valores `Null` en cleaned_merged_cash_request_fees se puden observar de la siguiente manera:
