@@ -58,7 +58,7 @@ Filas duplicadas en extract - cash request - data analyst.csv:
 
 Graficamente los valores faltantes en extract - cash request - data analyst se puden observar de la siguiente manera:
 
-![alt text](../graficos_y_salidas/valores_perdidos_finales_para_cash_request_y_fees.png)
+![alt text](../graficos_y_salidas/valores_perdidos_iniciales_para_cash_request.png)
 
 **Basic Information extract - fees - data analyst - .csv**:
 

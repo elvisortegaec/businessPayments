@@ -21,8 +21,83 @@ En este proyecto, se realizó una extracción de insights accionables, un análi
 Este es un informe resumido de los hallazgos clave del análisis exploratorio y de calidad de datos, así como los insights obtenidos, diseñado para los stakeholders de Business Payments.
 
 ### Hallazgos Clave de la Calidad de Datos
-TBD
 
+A continuación se presenta el análisis de cada una de las bases de datos, enfocándose en los valores faltantes. Como se puede observar, **no hay registros duplicados**, pero sí **hay datos faltantes** en ambas bases de datos.
+
+Graficamente los valores faltantes en extract - cash request - data analyst se puden observar de la siguiente manera:
+
+![alt text](graficos_y_salidas/valores_perdidos_iniciales_para_cash_request.png)
+
+Graficamente los valores faltantes en extract - fees - data analyst se puden observar de la siguiente manera:
+
+![alt text](graficos_y_salidas/valores_perdidos_iniciales_para_fees.png)
+
+**Soluciones**
+
+1. Se comprobó que la columna `id` de la primera base de datos corresponde a la columna `cash_request_id` de la segunda base de datos. En este sentido, se decidió **fusionar las dos bases** de datos considerando estos campos como equivalentes. 2913 registros de cash request no tienen un valor fee asociado. Dado que los datos no asociados no son de interés para el análisis de las métricas, se decidió tomar en cuenta solo los registros de cash request que tienen un registro de fee asociado. Por otro lado, dado que las columnas `id`, `created_at` y `updated_at` tienen el mismo nombre en ambas bases de datos, se decidió **añadir el sufijo `_fee` a todas las columnas de la segunda base de datos, excepto `cash_request_id`**.
+
+2. Se verificó que los valores nulos de `user_id` corresponden a los valores de `deleted_account_id`. En ese sentido, **se rellenaron los valores nulos en `user_id` usando `deleted_account_id`**. Se recuperaron 906 datos perdidos en `user_id`.
+
+3. Consecuentemente, fue necesario convertir el tipo de datos de las columnas de interés a tipos que faciliten el manejo de los datos en las métricas. Las columnas `created_at` y `created_at_fee` se cambiaron de tipo de datos de objeto a tipo de fecha. A partir de ese formato, se crearon dos nuevas columnas, `cohort` y `month`, con la finalidad de facilitar en análisis de datos por cohortes y meses, tanto de las fechas de creación de las solicitudes de dinero como de las tasas aplicadas.
+
+4. Seguidamente, se procedió a documentar el proceso para completar los valores faltantes. A continuación, se presentan los códigos que se usaron para completar los valores faltantes en las columnas mencionadas, seguido de una explicación. La explicación se tomó de Lexique - Data Analyst.xlsx. En los casos en que aparece un signo de interrogación en la explicación, es porque no se ha encontrado una justificación para los datos faltantes; consecuentemente, se completaron los datos con "Null". Dado que esos campos no son de utilidad en los futuros análisis, no fue necesario implementar otra estrategia.
+
+**Códigos para información faltante basados en Lexique - Data Analyst.xlsx**:
+
+| Nombre de la Columna           | Código   | Explicación                                      |
+|--------------------------------|----------|--------------------------------------------------|
+| moderated_at                   | 98       | No necesita una revisión manual                  |
+| deleted_account_id             | 98888888 | No hay cuenta eliminada                          |
+| cash_request_received_date     | 98       | No se envió un débito directo SEPA               |
+| money_back_date                | Null     | ?                                                |
+| send_at                        | Null     | ?                                                |
+| recovery_status                | 98       | La solicitud de efectivo nunca tuvo un incidente de pago |
+| reco_creation                  | Null     | ?                                                |
+| reco_last_update               | Null     | ?                                                |
+| category_fee                   | 98       | No incident                                      |
+| paid_at_fee                    | Null     | ?                                                |
+| from_date_fee                  | 98       | No hay tarifas pospuestas                        |
+| to_date_fee                    | 98       | No hay tarifas pospuestas                        |
+
+**Evaluación de la calidad de los datos para cleaned_merged_cash_request_fees.csv**
+
+Valores faltantes en cleaned_merged_cash_request_fees.csv:
+- `id`: 0
+- `amount`: 0
+- `status`: 0
+- `created_at`: 0
+- `updated_at`: 0
+- `user_id`: 0
+- `moderated_at`: 0
+- `deleted_account_id`: 0
+- `reimbursement_date`: 0
+- `cash_request_received_date`: 0
+- `money_back_date`: 1356
+- `transfer_type`: 0
+- `send_at`: 3487
+- `recovery_status`: 0
+- `reco_creation`: 14163
+- `reco_last_update`: 14163
+- `id_fee`: 0
+- `cash_request_id`: 0
+- `type_fee`: 0
+- `status_fee`: 0
+- `category_fee`: 0
+- `total_amount_fee`: 0
+- `reason_fee`: 0
+- `created_at_fee`: 0
+- `updated_at_fee`: 0
+- `paid_at_fee`: 5526
+- `from_date_fee`: 0
+- `to_date_fee`: 0
+- `charge_moment_fee`: 0
+
+Filas duplicadas en merged_cash_request_fees.csv:
+- 0
+
+Graficamente los valores `Null` en cleaned_merged_cash_request_fees se puden observar de la siguiente manera:
+
+![alt text](graficos_y_salidas/valores_perdidos_finales_para_cash_request_y_fees.png)
 
 ### Hallazgos Clave del Análisis Exploratorio
 Resultados del análisis exploratorio de los Datos, utilizando diversas gráficas para representar la distribución, explorar relaciones entre variables y detectar valores atipicos que requieran una investigación específica.
