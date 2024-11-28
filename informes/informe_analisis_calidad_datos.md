@@ -56,7 +56,7 @@ Valores faltantes en extract - cash request - data analyst.csv:
 Filas duplicadas en extract - cash request - data analyst.csv:
 - 0
 
-Graficamente los valores faltantes en extract - cash request - data analyst se puden observar de la siguiente manera:
+Graficamente los valores faltantes en extract - cash request - data analyst se pueden observar de la siguiente manera:
 
 ![alt text](../graficos_y_salidas/valores_perdidos_iniciales_para_cash_request.png)
 
@@ -275,7 +275,7 @@ Valores faltantes en cleaned_merged_cash_request_fees.csv:
 Filas duplicadas en cleaned_merged_cash_request_fees.csv:
 - 0
 
-Graficamente los valores `Null` en cleaned_merged_cash_request_fees se puden observar de la siguiente manera:
+Graficamente los valores `Null` en cleaned_merged_cash_request_fees se pueden observar de la siguiente manera:
 
 ![alt text](../graficos_y_salidas/valores_perdidos_finales_para_cash_request_y_fees.png)
 
